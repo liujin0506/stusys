@@ -1,0 +1,25 @@
+
+<div class="pageContent">
+
+
+	<form method="post" action="__URL__/sms_mb_register/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<div class="pageFormContent" layoutH="58">
+		<input type="hidden" name="id" value="{$vo['id']}">
+			<div class="unit">
+				<label>短信内容：</label>
+				<textarea name="content" rows="5" cols="57">{$vo['content']}</textarea>
+			</div>
+			<div class="unit">
+			可以使用<br />{name} 替换姓名<br />{xuehao} 替换学号<br />{class} 替换班级<br />{gender} 替换性别<br />{tel} 替换联系电话
+			</div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+</div>
+

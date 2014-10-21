@@ -1,0 +1,60 @@
+<script>
+	function check($obj,$k){
+		var checked=$obj.checked;
+		if(checked){
+			$(".check"+$k).attr('checked',true);
+		}else{
+			$(".check"+$k).attr('checked',false);
+		}
+		home();
+	}
+
+	function checkChild($i){
+		var  checkedLength=$('.check'+$i+':checked').length;
+		if(checkedLength>0){
+			$("#check"+$i).attr('checked',true);
+		}else{
+			$("#check"+$i).attr('checked',false);
+		}
+		home();
+	}
+
+	function home(){
+		var home=$("#home").attr('checked');
+		var  homeCheckedLength=$('[name="node_id[]"]:checked').length;
+		if(homeCheckedLength>0){
+			$("#home").attr('checked',true);
+		}else{
+			$("#home").attr('checked',false);
+		}
+	}
+</script>
+<div class="page">
+	<div class="pageContent">
+<form method="post" action="__URL__/insertAccess" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+	<input type="hidden" name="role_id" value="{$Think.get.groupId}">
+<volist name="node" id="node1">
+	<h2 class="contentTitle">{$node1.title} <input type="checkbox" name="node_id[]" value="{$node1.id}_{$node1.level}_{$node1.pid}" <in name="node1.id"  value="$selectdNode[1]" >checked='checked'</in> class="checkboxCtrl" group="node_id[]" id="home" /></h2>
+	<div class="pageFormContent lxzdl" layoutH="98">
+		<volist name="node1._child" id="node2" key="k">
+			<fieldset>
+				<legend>{$node2.title} <input type="checkbox" name="node_id[]" value="{$node2.id}_{$node2.level}_{$node2.pid}" <in name="node2.id"  value="$selectdNode[2]">checked='checked'</in> onclick="check(this,{$k})" id="check{$k}"/></legend>
+					<volist name="node2._child" id="node3">
+						<label>{$node3.title} <input type="checkbox" name="node_id[]" value="{$node3.id}_{$node3.level}_{$node3.pid}" <in name="node3.id"  value="$selectdNode[3]">checked='checked'</in> class="check{$k}" onclick="checkChild({$k})"/></label>
+					</volist>
+			</fieldset>
+		</volist>
+</div>
+</volist>
+	<div class="formBar">
+		<label style="float:left"><input type="checkbox" class="checkboxCtrl" group="node_id[]" />全选</label>
+		<ul>
+			<li><div class="button"><div class="buttonContent"><button type="button" class="checkboxCtrl" group="node_id[]" selectType="invert">反选</button></div></div></li>
+			<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+		</ul>
+	</div>
+</form>
+	
+	</div>
+</div>
+

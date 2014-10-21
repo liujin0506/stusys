@@ -1,0 +1,90 @@
+<script language="JavaScript">
+<!--
+function checkName(){
+	ThinkAjax.send('__URL__/checkAccount/','ajax=1&account='+$F('account'));
+}
+//-->
+</script>
+<div class="pageContent">
+	<h2 class="contentTitle">请先点击“放大镜”图标选择学生进行操作</h2>
+	<form method="post" action="__URL__/insert/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+		<div class="pageFormContent" layoutH="97">
+			<p>
+				<label>姓  名：</label>
+				<input type="hidden" class="required" name="orgLookup.sid" suggestFields="orgNum,sid" suggestUrl="__URL__/choose/" lookupGroup="orgLookup" readonly />
+				<input type="text" class="required" name="orgLookup.nickname" value="点击右侧图标选择" suggestFields="orgNum,nickname" suggestUrl="__URL__/choose/" lookupGroup="orgLookup" readonly />
+				<a class="btnLook" href="__URL__/choose/" lookupGroup="orgLookup">查找带回</a>
+			</p>
+			<p>
+				<label>学  号：</label>
+				<input type="text" class="required" name="orgLookup.account" value="" suggestFields="orgNum,account" suggestUrl="__URL__/choose/" lookupGroup="orgLookup" readonly />
+			</p>
+			<p>
+				<label>性  别：</label>
+				<input type="text" class="required" name="orgLookup.gender" value="" suggestFields="orgNum,gender" suggestUrl="__URL__/choose/" lookupGroup="orgLookup" readonly />	
+			</p>
+			<p>
+				<label>班  级：</label>
+				<input type="text" class="required" name="orgLookup.class" value="" suggestFields="orgNum,class" suggestUrl="__URL__/choose/" lookupGroup="orgLookup" readonly />
+			</p>
+			<p>
+				<label>培养状态：</label>
+				<input type="text" class="required" name="orgLookup.py_status" value="" suggestFields="orgNum,py_status" suggestUrl="__URL__/choose/" lookupGroup="orgLookup" readonly />
+			</p>
+			<p></p>
+			<p>
+				<label>递交入党申请时间：</label>
+				<input type="text" name="d_time" class="date" size="20" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</p>
+			<p>
+				<label>成为积极分子时间：</label>
+				<input type="text" name="j_time" class="date" size="20" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</p>
+			<p>
+				<label>成为重培对象时间：</label>
+				<input type="text" name="z_time" class="date" size="20" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</p>
+			<p>
+				<label>成为预备党员时间：</label>
+				<input type="text" name="y_time" class="date" size="20" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</p>
+			<p>
+				<label>成为党员时间：</label>
+				<input type="text" name="r_time" class="date" size="20" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</p>
+			<p>
+				<label>组织关系转出时间：</label>
+				<input type="text" name="c_time" class="date" size="20" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</p>
+			<p>
+				<label>介绍人一：</label>
+				<input type="text" name="jsr_1" size="30" class="required"/>
+			</p>
+			<p>
+				<label>介绍人二：</label>
+				<input type="text" name="jsr_2" size="30" class="required"/>
+			</p>
+			<p></p>
+			<p>
+				<label>备  注：</label>
+				<textarea name="remark" rows="5" cols="30"></textarea>
+			</p>
+			<p>
+				<label>状  态：</label>
+				<select name="status">
+					<option value="1">启用</option>
+					<option value="0">禁用</option>
+				</select>
+			</p>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>
+

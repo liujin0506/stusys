@@ -1,0 +1,107 @@
+<include file="Public:pagerForm" />
+
+<div class="pageHeader">
+	<form rel="pagerForm" onsubmit="return navTabSearch(this);" action="__URL__" method="post">
+	<div class="searchBar">
+		<ul class="searchContent">
+		<li>
+				<label>学号：</label>
+				<input type="text" name="account" />
+			</li>
+		<li>
+				<label>姓名：</label>
+				<input type="text" name="nickname" value="" />
+			</li>
+			<li>
+				<label>性别：</label>
+				<select class="" name="gender">
+					<option value="">--请选择性别--</option>
+					<option value="男">男</option>
+					<option value="女">女</option>
+				</select>
+			</li>
+			<li>
+				<label>班级：</label>
+				<select class="" name="class_id">
+					<option value="">--请选择班级--</option>
+					<volist name="class" id="class">
+					<option value="{$class.id}">{$class.classname}</option>
+					</volist>
+				</select>
+			</li>
+		</ul>
+		<div class="subBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+			</ul>
+		</div>
+	</div>
+	</form>
+</div>
+
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="__URL__/add" target="navTab"><span>新增</span></a></li>
+			<li><a class="delete" href="__URL__/foreverdelete/id/{sid_user}/navTabId/__MODULE__" target="ajaxTodo" title="你确定要删除吗？" warn="请选择用户"><span>删除</span></a></li>
+			<li><a class="edit" href="__URL__/edit/id/{sid_user}" target="dialog" mask="true" warn="请选择记录"><span>编辑/查看</span></a></li>
+			<li class="line">line</li>
+			<li><a class="edit" href="__URL__/sms/" mask="true" warn="请选择记录" target="selectedTodo" rel="ids" postType="string"><span>发送短信（请先设置模板=>）</span></a></li>
+			<li><a class="edit" href="__URL__/sms_mb/" target="dialog" ><span>短信模板设置</span></a></li>
+			<li class="line">line</li>
+			<!--<li><a class="edit" href="__URL__/wjcl_mb/" target="dialog" max="true"><span>违纪处理模板设置</span></a></li>-->
+			<li><a class="edit" href="__URL__/cfjd_mb/" target="dialog" max="true" ><span>处分决定模板设置</span></a></li>
+		</ul>
+	</div>
+	<div id="print_table">
+	<table class="table" width="100%" layoutH="163">
+		<thead>
+		<tr>
+			<th width="20"><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+			<th width="26">编号</th>
+			<th width="70">学 号</th>
+			<th  width="60">姓名</th>
+			<th width="120">班级</th>
+			<th  width="30">性别</th>
+			<th width="80">联系电话</th>
+			<th width="80">违纪类别</th>
+			<th width="80">违纪时间</th>
+			<th width="100">违纪原因</th>
+			<th width="100">处理结果</th>
+			<th width="80">处理时间</th>
+			<th width="100">创建时间</th>
+			<th width="120">操作</th>
+		</tr>
+		</thead>
+		<tbody>
+		<volist id="vo" name="list">
+			<tr target="sid_user" rel="{$vo['id']}">
+				<td><input name="ids" value="{$vo['id']}" type="checkbox"></td>
+				<td>{$vo['id']}</td>
+				<td>{$vo['sid']|getStudentinfo='account'}</td>
+				<td>{$vo['sid']|getStudentinfo='nickname'}</td>
+				<td>{$vo['sid']|getStudentinfo='class_id'|getClass}</td>
+				<td>{$vo['sid']|getStudentinfo='gender'}</td>
+				<td>{$vo['sid']|getStudentinfo='tel'}</td>
+				<td>{$vo['type']}</td>
+				<td>{$vo['wjtime']|date="Y-m-d",###}</td>
+				<td>{$vo['reason']|getWeijirull}</td>
+				<td>{$vo['result']}</td>
+				<td>{$vo['cltime']|date="Y-m-d",###}</td>
+				<td>{$vo['createtime']|date="Y-m-d H:i:s",###}</td>
+				<td><a href="__URL__/rprint/id/{$vo['id']}" target="_blank"><b style="color:#FF0000">生成违纪决定</b></a></td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+	</div>
+	<div class="panelBar">
+		<div class="pages">
+			<span>共{$totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+	</div>
+
+</div>
+
+

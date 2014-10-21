@@ -1,0 +1,75 @@
+<div class="pageContent">
+	<h2 class="contentTitle">提交成功后请在学生请销假管理中进行管理</h2>
+	<form method="post" action="__URL__/Rleaveinsert" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+		<div class="pageFormContent" layoutH="97">
+			<p>
+				<label>姓  名：</label>
+				<input type="hidden" class="required" name="sid" value="{$vo.id}" readonly />
+				<input type="text" class="required" name="nickname" value="{$vo.nickname}" readonly />
+			</p>
+			<p>
+				<label>学  号：</label>
+				<input type="text" class="required" name="account" value="{$vo.account}" readonly />
+			</p>
+			<p>
+				<label>性  别：</label>
+				<input type="text" class="required" name="gender" value="{$vo.gender}" readonly />	
+			</p>
+			<p>
+				<label>班  级：</label>
+				<input type="text" class="required" name="class" value="{$vo['class_id'] | getClass}" readonly />
+			</p>
+			<p>
+				<label>宿舍：</label>
+				<input type="text" name="sushe" size="30" maxlength="20" class="required alphanumeric" value="{$vo['dormitory_id'] | getSushe}" disabled />
+			</p>
+			<p>
+				<label>联系电话：</label>
+				<input type="text" name="tel" size="30" maxlength="20" class="required alphanumeric" value="{$vo.tel}" disabled />
+			</p>
+			<p>
+				<label>请假时间：</label>
+					<input type="text" name="rdata1" class="date require" size="10" /><a class="inputDateButton" href="javascript:;">选择</a>
+					<input type="text" name="rdata2" class="date require" size="10" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</p>
+			<div class="unit">
+				<label>请假天数：</label>
+				<input type="text"  name="days"  size="5" maxlength="5">&nbsp;&nbsp;天
+			</div>
+			<div class="unit">
+				<label>请假教师：</label>
+				<input type="text"  name="teacher"  size="15" maxlength="20">
+			</div>
+			<div class="unit">
+				<label>请假事由：</label>
+				<textarea name="reason" rows="3" cols="57"></textarea>
+			</div>
+			<div class="unit">
+				<label>备注：</label>
+				<textarea name="remark" rows="3" cols="57"></textarea>
+			</div>
+			<div class="unit">
+				<label>准假教师：</label>
+				<input type="text"  name="zjteacher"  size="15" maxlength="20">
+			</div>
+			<div class="unit">
+				<label>状  态：</label>
+				<select name="status">
+					<!--option value="0">已撤销</option-->
+					<!--option value="1">已提交</option-->
+					<option value="2">请假成功</option>
+					<option value="3">请假未成功</option>
+					<option value="4">销假成功</option>
+				</select>
+			</div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>

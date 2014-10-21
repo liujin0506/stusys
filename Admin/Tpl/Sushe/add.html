@@ -1,0 +1,58 @@
+
+<script language="JavaScript">
+<!--
+function checkName(){
+	ThinkAjax.send('__URL__/checkAccount/','ajax=1&account='+$F('account'));
+}
+//-->
+</script>
+
+
+<div class="pageContent">
+	
+	<form method="post" action="__URL__/insert/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<div class="pageFormContent" layoutH="58">
+
+			<div class="unit">
+				<label>校区：</label>
+				<select name="xiaoqu">
+					<option value="东区">东区</option>
+					<option value="西区">西区</option>
+					<option value="南区">南区</option>
+					<option value="新区">新区</option>
+				</select>
+			</div>
+			<div class="unit">
+				<label>楼宇号：</label>
+				<input type="text" name="building" size="30" maxlength="20" class="required alphanumeric"/>
+			</div>
+			<div class="unit">
+				<label>宿舍号：</label>
+				<input type="text" name="sushe_id" size="30" maxlength="100" class="required alphanumeric"/>
+			</div>
+			<div class="unit">
+				<label>状态：</label>
+				<select name="status">
+					<option value="1">启用</option>
+					<option value="0">禁用</option>
+				</select>
+			</div>
+			
+			<div class="unit">
+				<label>备注：</label>
+				<textarea name="remark" rows="3" cols="57"></textarea>
+			</div>
+			
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+</div>
+
+
+

@@ -1,0 +1,66 @@
+<include file="Public:pagerForm" />
+
+<div class="pageHeader">
+	<form rel="pagerForm" onsubmit="return navTabSearch(this);" action="__URL__" method="post">
+	<div class="searchBar">
+		<ul class="searchContent">
+			<li>
+				<label>课程名：</label>
+				<input type="text" name="coursename" value=""/>
+			</li>
+		</ul>
+		<div class="subBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+			</ul>
+		</div>
+	</div>
+	</form>
+</div>
+
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="__URL__/add" target="dialog" mask="true"><span>新增</span></a></li>
+			<li><a class="delete" href="__URL__/foreverdelete/id/{sid_user}/navTabId/__MODULE__" target="ajaxTodo" title="你确定要删除吗？" warn="请选择课程"><span>删除</span></a></li>
+			<li><a class="edit" href="__URL__/edit/id/{sid_user}" target="dialog" mask="true" warn="请选择课程"><span>编辑</span></a></li>
+		</ul>
+	</div>
+
+	<table class="table" width="100%" layoutH="138">
+		<thead>
+		<tr>
+			<th width="60">编号</th>
+			<th width="100" orderField="coursename" <if condition="$_REQUEST._order eq 'coursename'">class="{$_REQUEST._sort}"</if>>课程名</th>
+			<th orderField="year" <if condition="$_REQUEST._order eq 'year'">class="{$_REQUEST._sort}"</if>>开始学年</th>
+			<th orderField="term" <if condition="$_REQUEST._order eq 'term'">class="{$_REQUEST._sort}"</if>>开始学期</th>
+			<th orderField="teacher" <if condition="$_REQUEST._order eq 'teacher'">class="{$_REQUEST._sort}"</if>>任课老师</th>
+			<th width="100" orderField="create_time" <if condition="$_REQUEST._order eq 'create_time'">class="{$_REQUEST._sort}"</if>是>添加时间</th>
+			<th width="80" orderField="status" <if condition="$_REQUEST._order eq 'status'">class="{$_REQUEST._sort}"</if>>状态</th>
+		</tr>
+		</thead>
+		<tbody>
+		<volist id="vo" name="list">
+			<tr target="sid_user" rel="{$vo['id']}">
+				<td>{$vo['id']}</td>
+				<td>{$vo['coursename']}</td>
+				<td>{$vo['year']}</td>
+				<td>{$vo['term']}</td>
+				<td>{$vo['teacher']}</td>
+				<td>{$vo['create_time']|date="Y-m-d",###}</td>
+				<td>{$vo['status']|showStatus=$vo['id']}</td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+
+	<div class="panelBar">
+		<div class="pages">
+			<span>共{$totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+	</div>
+
+</div>
+
+

@@ -1,0 +1,52 @@
+
+<div class="pageContent">
+
+
+	<form method="post" action="__URL__/update/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/>
+		<input type="hidden" name="id" value="{$vo.id}" />
+		<div class="pageFormContent" layoutH="58">
+			<div class="unit">
+				<label>校区：</label>
+				<select class="small bLeft"  name="xiaoqu">
+					<option <eq name="vo.xiaoqu" value="东区" >selected</eq> value="东区">东区</option>
+					<option <eq name="vo.xiaoqu" value="西区" >selected</eq> value="西区">西区</option>
+					<option <eq name="vo.xiaoqu" value="南区" >selected</eq> value="东区">南区</option>
+					<option <eq name="vo.xiaoqu" value="新区" >selected</eq> value="西区">新区</option>
+				</select>
+			</div>
+			
+			<div class="unit">
+				<label>楼宇号：</label>
+				<input type="text" class="required" name="building" value="{$vo.building}">
+			</div>
+
+			<div class="unit">
+				<label>宿舍号：</label>
+				<input type="text" class="required" name="sushe_id" value="{$vo.sushe_id}">
+			</div>
+			
+			<div class="unit">
+				<label>状态：</label>
+				<select class="small bLeft"  name="status">
+					<option <eq name="vo.status" value="1" >selected</eq> value="1">启用</option>
+					<option <eq name="vo.status" value="0" >selected</eq> value="0">禁用</option>
+				</select>
+			</div>
+			
+			<div class="unit">
+				<label>备  注：</label>
+				<textarea class="large bLeft"  name="remark" rows="5" cols="57">{$vo.remark}</textarea>
+			</div>
+			
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+</div>
+

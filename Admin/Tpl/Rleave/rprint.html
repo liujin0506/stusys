@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>请假条打印</title>
+</head>
+<body>
+<div class="Section0"  style="layout-grid:15.6000pt;" >
+<p class=p0  style="margin-bottom:0pt; margin-top:0pt; text-align:center; line-height:25.0000pt; " >
+<span style="mso-spacerun:'yes'; font-size:14pt; font-family:'仿宋_GB2312'; " ><b>请假条</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " ><o:p></o:p></span></p>
+<p class=p0  style="margin-bottom:0pt; margin-top:0pt; text-align:center; line-height:25.0000pt; " >
+<span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NO.<u>00{$vo['id']}</u></span>
+<span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " ><o:p></o:p></span></p>
+<p class=p0  style="margin-bottom:0pt; margin-top:0pt; line-height:25.0000pt; " >
+<span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " >尊敬的{$vo['teacher']}老师：</span>
+<span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " ><o:p></o:p></span></p>
+<p class=p0  style="margin-bottom:0pt; margin-top:0pt; line-height:25.0000pt; " ><span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我因{$vo['reason']}，需请假{$vo['days']}天（{$vo['rdata1']|date="Y年m月d日",###}——{$vo['rdata2']|date="Y年m月d日",###}）。</span>
+<span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " ><o:p></o:p></span></p>
+<p class=p0  style="margin-bottom:0pt; margin-top:0pt; line-height:25.0000pt; " ><span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：{$vo['remark']}。</span>
+<span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " ><o:p></o:p></span></p>
+<p class=p0  style="margin-bottom:0pt; margin-top:0pt; line-height:25.0000pt; " ><span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;望老师批准！</span>
+<span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " ><o:p></o:p></span></p>
+<p class=p0  style="margin-bottom:0pt; margin-top:0pt; line-height:25.0000pt; " ><span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " >准假教师：{$vo['zjteacher']}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$userinfo['class_id']||getClass}</span>
+<span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " ><o:p></o:p></span></p>
+<p class=p0  style="margin-bottom:0pt; margin-top:0pt; line-height:25.0000pt; " ><span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " >生态环境学院学生工作办公室（签章）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学生：{$userinfo['nickname']}</span>
+<span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " ><o:p></o:p></span></p>
+<p class=p0  style="margin-bottom:0pt; margin-top:0pt; line-height:25.0000pt; " ><span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " >{$vo['createtime']|date="Y年m月d日",###}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20______年_____月_____日&nbsp;&nbsp;</span>
+<span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " ><o:p></o:p></span></p>
+<p class=p0  style="margin-bottom:0pt; margin-top:0pt; line-height:25.0000pt; " ><span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'仿宋_GB2312'; " >（注：学生请假离校后，请及时到班主任处、学生公寓值班室登记，返校后及时到学办销假）&nbsp;</span>
+<span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'宋体'; " >&nbsp;</span><span style="mso-spacerun:'yes'; font-size:10.5000pt; font-family:'宋体'; " ><o:p></o:p></span></p></div>
+</body>
+</html>
+

@@ -1,0 +1,63 @@
+
+<div class="pageContent">
+
+
+	<form method="post" action="__URL__/update/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/>
+		<input type="hidden" name="id" value="{$vo.id}" />
+		<div class="pageFormContent" layoutH="58">
+					
+			<div class="unit">
+				<label>学号：</label>
+				<input type="text" class="alphanumeric" size="30" maxlength="20" name="account" value="{$vo.account}" disabled />
+			</div>
+			<div class="unit">
+				<label>校园卡号：</label>
+				<input type="text" name="sch_id" size="30" maxlength="20" class="alphanumeric" value="{$vo.sch_id}" disabled />
+			</div>
+			<div class="unit">
+				<label>姓名：</label>
+				<input type="text" name="nickname" size="30" maxlength="100" class="" value="{$vo.nickname}" disabled />
+			</div>
+			<div class="unit">
+				<label>性别：</label>
+				<input type="text" name="gender" size="30" maxlength="100" class="" value="{$vo.gender}" disabled />
+			</div>
+			<div class="unit">
+				<label>联系方式：</label>
+				<input type="text" class="alphanumeric" size="30" maxlength="20" name="tel" value="{$vo.tel}" disabled />
+			</div>
+			<div class="unit">
+				<label>身份证号：</label>
+				<input type="text" class="alphanumeric" size="30" maxlength="20" name="idcard" value="{$vo.idcard}" disabled />
+			</div>
+			<div class="unit">
+				<label>民族：</label>
+				<input type="text" name="ethnicity" size="30" maxlength="100" class="" value="{$vo.ethnicity}" disabled />
+			</div>
+			<div class="unit">
+				<label>入党时间：</label>
+				<input type="text" size="30" maxlength="20" name="r_time" value="{$vt['r_time'] | date='Y-m-d',###}" disabled />
+			</div>
+			<div class="unit">
+				<label>转正时间：</label>
+				<input type="text" size="30" maxlength="20" name="z_time" value="{$vt['z_time'] | date='Y-m-d',###}" disabled />
+			</div>
+			<div class="unit">
+				<label>介绍人一：</label>
+				<input type="text" size="30" maxlength="20" name="jsr_1" value="{$vt['jsr_1']}" disabled />
+			</div>
+			<div class="unit">
+				<label>介绍人二：</label>
+				<input type="text" size="30" maxlength="20" name="jsr_2" value="{$vt['jsr_2']}" disabled />
+			</div>
+			<div class="unit">
+				<label>备注：</label>
+				<textarea class="large bLeft"  name="remark" rows="5" cols="57" disabled>{$vt.remark}</textarea>
+			</div>
+			
+		</div>
+	</form>
+	
+</div>
+

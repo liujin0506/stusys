@@ -1,0 +1,85 @@
+
+<div class="pageContent">
+
+
+	<form method="post" action="__URL__/update/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/>
+		<input type="hidden" name="id" value="{$vo.id}" />
+		<div class="pageFormContent" layoutH="58">
+			<div class="unit">
+				<label>学号：</label>
+				<input type="text" name="account" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['account']}" disabled />
+			</div>
+			<div class="unit">
+				<label>班级：</label>
+				<input type="text" name="class" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['class_id']||getClass}" disabled />
+			</div>
+			<div class="unit">
+				<label>宿舍：</label>
+				<input type="text" name="sushe" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['dormitory_id']||getSushe}" disabled />
+			</div>
+			<div class="unit">
+				<label>姓名：</label>
+				<input type="text" name="nickname" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['nickname']}" disabled />
+			</div>
+			<div class="unit">
+				<label>性别：</label>
+				<input type="text" name="gender" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['gender']}" disabled />
+			</div>
+			<div class="unit">
+				<label>联系电话：</label>
+				<input type="text" name="tel" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['tel']}" disabled />
+			</div>
+			<div class="unit">
+				<label>违纪原因：</label>
+				<select class="" name="reason">
+					<option value="">--请选择违纪原因--</option>
+					<volist name="weiji" id="weiji">
+					<option <if condition="($vo['reason'] eq $weiji['id'])"> selected</if> value="{$weiji.id}">{$weiji.name}</option>
+					</volist>
+				</select>
+			</div>
+			<div class="unit">
+				<label>违纪类别：</label>
+				<select class="" name="type">
+					<option <eq name="vo.type" value="" >selected</eq> value="">--请选择违纪类别--</option>
+					<option <eq name="vo.type" value="院级警告" >selected</eq> value="院级警告">院级警告</option>
+					<option <eq name="vo.type" value="警告" >selected</eq> value="警告">警告</option>
+					<option <eq name="vo.type" value="严重警告" >selected</eq> value="严重警告">严重警告</option>
+					<option <eq name="vo.type" value="记过" >selected</eq> value="记过">记过</option>
+					<option <eq name="vo.type" value="留校察看" >selected</eq> value="留校察看">留校察看</option>
+					<option <eq name="vo.type" value="开除学籍" >selected</eq> value="开除学籍">开除学籍</option>
+					<option <eq name="vo.type" value="其他" >selected</eq> value="其他">其他</option>
+				</select>
+			</div>
+			<div class="unit">
+				<label>违纪时间：</label>
+					<input type="text" name="wjtime" class="date require" size="10" value="{$vo.wjtime|date="Y-m-d",###}" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</div>
+			<div class="unit">
+				<label>处理/处分结果：</label>
+				<textarea name="result" rows="3" cols="57">{$vo.result}</textarea>
+			</div>
+			<div class="unit">
+				<label>处理/处分时间：</label>
+					<input type="text" name="cltime" class="date require" size="10" value="{$vo.cltime|date="Y-m-d",###}"/><a class="inputDateButton" href="javascript:;">选择</a>
+			</div>
+			<div class="unit">
+				<label>操作教师：</label>
+				<input type="text"  name="czteacher" value="{$vo.czteacher}" size="15" maxlength="20">
+			</div>
+			<div class="unit">
+				<label>备注：</label>
+				<textarea name="remark" rows="3" cols="57">{$vo['remark']}</textarea>
+			</div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+</div>
+

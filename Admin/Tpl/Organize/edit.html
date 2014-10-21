@@ -1,0 +1,81 @@
+
+<div class="pageContent">
+
+
+	<form method="post" action="__URL__/update/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/>
+		<input type="hidden" name="id" value="{$vo.id}" />
+		<div class="pageFormContent" layoutH="58">			
+			<div class="unit">
+				<label>姓名：</label>
+				<input type="hidden" class="required" name="sid" value="{$vo.sid}" readonly>
+				<input type="text" class="required"   name="nickname" value="{$vo['sid']|getStudentinfo=###,nickname}" readonly>
+			</div>
+			
+			<div class="unit">
+				<label>学号：</label>
+				<input type="text" class="required" name="account" value="{$vo['sid']|getStudentinfo=###,account}" readonly>
+			</div>
+
+			<div class="unit">
+				<label>性别：</label>
+				<input type="text" class="required" name="gender" value="{$vo['sid']|getStudentinfo=###,gender}" readonly>
+			</div>
+			<div class="unit">
+				<label>班级：</label>
+				<input type="text" class="required" name="class" value="{$vo['sid']|getStudentinfo=###,class_id|getClass}" readonly>
+			</div>
+			<div class="unit">
+				<label>递交入党申请时间：</label>
+				<input type="text" name="d_time" class="date"  value="{$vo['d_time']|date="Y-m-d",###}" size="20" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</div>
+			<div class="unit">
+				<label>成为积极分子时间：</label>
+				<input type="text" name="j_time" class="date" value="{$vo['j_time']|date="Y-m-d",###}" size="20" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</div>
+			<div class="unit">
+				<label>成为重培对象时间：</label>
+				<input type="text" name="z_time" class="date" value="{$vo['z_time']|date="Y-m-d",###}" size="20" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</div>
+			<div class="unit">
+				<label>成为预备党员时间：</label>
+				<input type="text" name="y_time" class="date" value="{$vo['y_time']|date="Y-m-d",###}" size="20" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</div>
+			<div class="unit">
+				<label>成为党员时间：</label>
+				<input type="text" name="r_time" class="date" value="{$vo['r_time']|date="Y-m-d",###}" size="20" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</div>
+			<div class="unit">
+				<label>组织关系转出时间：</label>
+				<input type="text" name="c_time" class="date" value="{$vo['c_time']|date="Y-m-d",###}" size="20" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</div>
+			<div class="unit">
+				<label>介绍人一：</label>
+				<input type="text" class="required" name="jsr_1" value="{$vo['jsr_1']}" >
+			</div>
+			<div class="unit">
+				<label>介绍人二：</label>
+				<input type="text" class="required" name="jsr_2" value="{$vo['jsr_2']}" >
+			</div>
+			<div class="unit">
+				<label>备  注：</label>
+				<textarea class="large bLeft"  name="remark" rows="5" cols="50">{$vo.remark}</textarea>
+			</div>
+			<div class="unit">
+				<label>状态：</label>
+				<select class="small bLeft"  name="status">
+					<option <eq name="vo.status" value="1" >selected</eq> value="1">启用</option>
+					<option <eq name="vo.status" value="0" >selected</eq> value="0">禁用</option>
+				</select>
+			</div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+</div>
+

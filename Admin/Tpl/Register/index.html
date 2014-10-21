@@ -1,0 +1,46 @@
+<include file="Public:pagerForm" />
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="__URL__/add" target="dialog" mask="true"><span>新增学期</span></a></li>
+			<li><a class="delete" href="__URL__/foreverdelete/id/{sid_user}/navTabId/__MODULE__" target="ajaxTodo" title="你确定要删除吗？" warn="请选择一个学期进行操作"><span>删除当前学期</span></a></li>
+			<li><a class="edit" href="__URL__/edit/id/{sid_user}" target="dialog" mask="true" warn="请选择一个学期进行操作" ><span>编辑当前学期</span></a></li>
+			<li class="line">line</li>
+			<li><a class="delete" href="__URL__/unregister/id/{sid_user}" target="navTab" mask="true" warn="请选择一个学期进行操作"><span>未注册名单</span></a></li>
+			<li><a class="edit" href="__URL__/register/id/{sid_user}" target="navTab" mask="true" warn="请选择一个学期进行操作"><span>已注册名单</span></a></li>
+		</ul>
+	</div>
+
+	<table class="table" width="100%" layoutH="73">
+		<thead>
+		<tr>
+			<th width="60">编号</th>
+			<th width="">学期名称</th>
+			<th width="200">备注</th>
+			<th width="150" orderField="createtime" <if condition="$_REQUEST._order eq 'createtime'">class="{$_REQUEST._sort}"</if>是>添加时间</th>
+			<th width="200" orderField="status" <if condition="$_REQUEST._order eq 'status'">class="{$_REQUEST._sort}"</if>>状态</th>
+		</tr>
+		</thead>
+		<tbody>
+		<volist id="vo" name="list">
+			<tr target="sid_user" rel="{$vo['id']}">
+				<td>{$vo['id']}</td>
+				<td>{$vo['title']}</td>
+				<td>{$vo['remark']}</td>
+				<td>{$vo['createtime']|date="Y-m-d",###}</td>
+				<td>{$vo['status']|showStatus=$vo['id']}</td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+
+	<div class="panelBar">
+		<div class="pages">
+			<span>共{$totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+	</div>
+
+</div>
+
+

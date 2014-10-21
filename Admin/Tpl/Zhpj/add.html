@@ -1,0 +1,38 @@
+<div class="pageContent">
+	<form method="post" action="__URL__/insert/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+		<div class="pageFormContent" layoutH="57">
+			<p>
+				<label>名  称：</label>
+				<input type="text" class="required" name="title" alt="示例：2014-2015年度春季学期" size="40"/>
+			</p>
+			<p>
+				<label>开始时间：</label>
+				<input type="text" name="start_time" class="date require" size="10" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</p>
+			<p>
+				<label>结束时间：</label>
+				<input type="text" name="end_time" class="date require" size="10" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</p>
+			<p>
+				<label>状  态：</label>
+				<select name="status">
+					<option value="1">启用</option>
+					<option value="0">禁用</option>
+				</select>
+			</p>
+			<p>
+				<label>备  注：</label>
+				<textarea name="remark" rows="5" cols="30"></textarea>
+			</p>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>
+

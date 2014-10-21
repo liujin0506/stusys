@@ -1,0 +1,89 @@
+<script language="JavaScript">
+<!--
+function checkName(){
+	ThinkAjax.send('__URL__/checkAccount/','ajax=1&account='+$F('account'));
+}
+//-->
+</script>
+<div class="pageContent">
+	<h2 class="contentTitle">请先点击“放大镜”图标选择学生进行操作</h2>
+	<form method="post" action="__URL__/insert/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxDone);">
+		<div class="pageFormContent" layoutH="97">
+			<p>
+				<label>姓  名：</label>
+				<input type="hidden" class="required" name="orgLookup.sid" suggestFields="orgNum,sid" suggestUrl="__URL__/choose/" lookupGroup="orgLookup" readonly />
+				<input type="text" class="required" name="orgLookup.nickname" value="点击右侧图标选择" suggestFields="orgNum,nickname" suggestUrl="__URL__/choose/" lookupGroup="orgLookup" readonly />
+				<a class="btnLook" href="__URL__/choose/" lookupGroup="orgLookup">查找带回</a>
+			</p>
+			<p>
+				<label>学  号：</label>
+				<input type="text" class="required" name="orgLookup.account" value="" suggestFields="orgNum,account" suggestUrl="__URL__/choose/" lookupGroup="orgLookup" readonly />
+			</p>
+			<p>
+				<label>性  别：</label>
+				<input type="text" class="required" name="orgLookup.gender" value="" suggestFields="orgNum,gender" suggestUrl="__URL__/choose/" lookupGroup="orgLookup" readonly />	
+			</p>
+			<p>
+				<label>班  级：</label>
+				<input type="text" class="required" name="orgLookup.class" value="" suggestFields="orgNum,class" suggestUrl="__URL__/choose/" lookupGroup="orgLookup" readonly />
+			</p>
+			<p>
+				<label>入学年份：</label>
+				<input type="text" class="required" name="orgLookup.grade" value="" suggestFields="orgNum,grade" suggestUrl="__URL__/choose/" lookupGroup="orgLookup" readonly />
+			</p>
+			<p>
+				<label>专 业：</label>
+				<input type="text" class="required" name="orgLookup.field" value="" suggestFields="orgNum,field" suggestUrl="__URL__/choose/" lookupGroup="orgLookup" readonly />
+			</p>
+			<p>
+				<label>楼号：</label>
+				<input type="text" class="required" name="orgLookup.louhao" size="10" maxlength="10"  value="" suggestFields="orgNum,louhao" suggestUrl="__URL__/choose/" lookupGroup="orgLookup" readonly />
+			</p>
+			<p>
+				<label>宿舍：</label>
+				<input type="text" class="required" name="orgLookup.sushe" size="10" maxlength="10" value="" suggestFields="orgNum,sushe" suggestUrl="__URL__/choose/" lookupGroup="orgLookup" readonly />
+			</p>
+			<p>
+				<label>联系电话：</label>
+				<input type="text" name="orgLookup.tel" size="30" maxlength="20" class="required alphanumeric" value="" uggestFields="orgNum,tel" suggestUrl="__URL__/choose/" lookupGroup="orgLookup" disabled />
+			</p>
+			<p>
+				<label>获得时间：</label>
+					<input type="text" name="hdtime" class="date require" size="10" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</p>
+			<div class="unit">
+				<label>活动类型：</label>
+				<select class="" name="type">
+					<option value="其他">--请选择活动类型--</option>
+					<volist name="activitys" id="activitys">
+					<option value="{$activitys.id}">{$activitys.name}</option>
+					</volist>
+				</select>
+			</div>
+			<div class="unit">
+				<label>参加活动情况：</label>
+				<textarea name="pactive" rows="3" cols="57"></textarea>
+			</div>
+			<div class="unit">
+				<label>备注：</label>
+				<textarea name="remark" rows="3" cols="57"></textarea>
+			</div>
+			<div class="unit">
+				<label>状  态：</label>
+				<select name="status">
+					<option value="1">已处理</option>
+					<option value="0">未处理</option>
+					<option value="2">已撤销</option>
+				</select>
+			</div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>

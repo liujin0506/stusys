@@ -1,0 +1,88 @@
+<include file="Public:pagerForm" />
+
+<div class="pageHeader">
+	<form rel="pagerForm" onsubmit="return navTabSearch(this);" action="__URL__/pj" method="post">
+	<div class="searchBar">
+		<ul class="searchContent">
+			<li>
+				<label>学号：</label>
+				<input type="text" name="account" value=""/>
+				<input type="hidden" name="time_id" value="{$time_id}"/>
+			</li>
+			<li>
+				<label>姓名：</label>
+				<input type="text" name="nickname" value=""/>
+			</li>
+			<li>
+				<label>性别：</label>
+				<select class="" name="gender">
+					<option value="">--请选择性别--</option>
+
+					<option value="男">男</option>
+					<option value="女">女</option>
+				</select>
+			</li>
+			<li>
+				<label>所在班级：</label>
+				<select class="" name="class_id">
+					<option value="">--请选择班级--</option>
+					<volist name="class" id="class">
+					<option value="{$class.id}">{$class.classname}</option>
+					</volist>
+				</select>
+			</li>
+		</ul>
+		<div class="subBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+			</ul>
+		</div>
+	</div>
+	</form>
+</div>
+
+<div class="pageContent">
+
+	<table class="table" width="100%" layoutH="163">
+		<thead>
+		<tr>
+			<th><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+			<th width="60">编号</th>
+			<th width="100" orderField="account" <if condition="$_REQUEST._order eq 'account'">class="{$_REQUEST._sort}"</if>>学号</th>
+			<th orderField="nickname" <if condition="$_REQUEST._order eq 'nickname'">class="{$_REQUEST._sort}"</if>>姓名</th>
+			<th orderField="gender" <if condition="$_REQUEST._order eq 'gender'">class="{$_REQUEST._sort}"</if>>性别</th>
+			<th orderField="class_id" <if condition="$_REQUEST._order eq 'class_id'">class="{$_REQUEST._sort}"</if>>所在班级</th>
+			<th orderField="louhao" <if condition="$_REQUEST._order eq 'louhao'">class="{$_REQUEST._sort}"</if>>所在宿舍</th>
+			<th orderField="ethnicity" <if condition="$_REQUEST._order eq 'ethnicity'">class="{$_REQUEST._sort}"</if>>民族</th>
+			<th width="100">联系方式</th>
+			<th width="100">操作</th>
+		</tr>
+		</thead>
+		<tbody>
+		<volist id="vo" name="list">
+			<tr target="sid_user" rel="{$vo['id']}">
+				<td><input name="ids" value="{$vo['id']}" type="checkbox"></td>
+				<td>{$vo['id']}</td>
+				<td>{$vo['account']}</td>
+				<td>{$vo['nickname']}</td>
+				<td>{$vo['gender']}</td>
+				<td>{$vo['class_id']|getClass}</td>
+				<td>{$vo['louhao']}#{$vo['sushe']}</td>
+				<td>{$vo['ethnicity']}</td>
+				<td>{$vo['tel']}</td>
+				<td><a href="__URL__/rprint/id/{$vo['id']}/time_id/{$time_id}" target="_blank"><b style="color:#FF0000">生成综合评价</b></a></td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+
+	<div class="panelBar">
+		<div class="pages">
+			<span>共{$totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+	</div>
+
+</div>
+
+

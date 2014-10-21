@@ -1,0 +1,55 @@
+
+<div class="pageContent">
+
+
+	<form method="post" action="__URL__/update/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/>
+		<input type="hidden" name="id" value="{$vo.id}" />
+		<div class="pageFormContent" layoutH="30">
+			<div class="unit">
+				<label>学号：</label>
+				<input type="text" name="account" size="30" maxlength="20" value="{$userinfo['account']}" disabled />
+			</div>
+			<div class="unit">
+				<label>班级：</label>
+				<input type="text" name="class" size="30" maxlength="20" value="{$userinfo['class_id']||getClass}" disabled />
+			</div>
+			<div class="unit">
+				<label>楼号：</label>
+				<input type="text" name="louhao" size="30" maxlength="20" value="{$userinfo['louhao']}" disabled />
+			</div>
+			<div class="unit">
+				<label>宿舍：</label>
+				<input type="text" name="sushe" size="30" maxlength="20" value="{$userinfo['sushe']}" disabled />
+			</div>
+			<div class="unit">
+				<label>姓名：</label>
+				<input type="text" name="nickname" size="30" maxlength="20" value="{$userinfo['nickname']}" disabled />
+			</div>
+			<div class="unit">
+				<label>性别：</label>
+				<input type="text" name="gender" size="30" maxlength="20" value="{$userinfo['gender']}" disabled />
+			</div>
+			<div class="unit">
+				<label>联系电话：</label>
+				<input type="text" name="tel" size="30" maxlength="20" value="{$userinfo['tel']}" disabled />
+			</div>
+			<div class="unit">
+				<label>请假时间：</label>
+					<input type="text" name="rdata1" class="date require" size="10" value="{$vo['rdata1']|date="Y-m-d",###}" disabled/>
+					<input type="text" name="rdata2" class="date require" size="10" value="{$vo['rdata2']|date="Y-m-d",###}" disabled/>
+			</div>
+			<div class="unit">
+				<label>请假事由：</label>
+				<textarea name="reason" rows="3" cols="57" disabled>{$vo['reason']}</textarea>
+			</div>
+			<div class="unit">
+				<label>备注：</label>
+				<textarea name="remark" rows="3" cols="57" disabled>{$vo['remark']}</textarea>
+			</div>
+			
+		</div>
+	</form>
+	
+</div>
+

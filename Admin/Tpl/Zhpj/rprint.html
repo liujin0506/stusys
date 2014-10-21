@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>学生综合评价表</title>
+</head>
+<body>
+	<h1 style="text-align:center;">学生综合评价表</h1>
+	<p style="text-align:left;">
+		<span style="font-size:18px;"> <strong>基本信息</strong>
+		</span>
+	</p>
+	<p style="text-align:left;">
+		<span>
+			<span style="line-height:27px;"> <b></b>
+			</span>
+		</span>
+	</p>
+	<hr />
+	<table style="width:100%;" cellpadding="0" cellspacing="0" border="0" class="ke-zeroborder" bordercolor="#000000">
+		<tbody>
+			<tr>
+				<td style="vertical-align:top;width: 33%;">
+					<p>姓名：{$userinfo.nickname}</p>
+					<p>身份证号：{$userinfo.idcard}</p>
+					<p>政治面貌：{$userinfo.politics}</p>
+					<p>类别：{$userinfo.type}</p>
+					<p>培养类别：{$userinfo.yeartype}</p>
+					<p>学生状态：{$userinfo.s_status}</p>
+					<p>贫困生等级：{$userinfo.poor_lever}</p>
+					<p>参加学生组织及社团:{$userinfo.shetuan}</p>
+					<p>学生干部职务：{$userinfo.cadres}</p>
+					<p>父亲姓名：{$userinfo.f_name}</p>
+					<p>父亲工作单位：{$userinfo.f_work}</p>
+					<p>父亲联系方式：{$userinfo.f_tel}</p>
+				</td>
+				<td style="vertical-align:top;width: 33%;">
+					<p>学号：{$userinfo.account}</p>
+					<p>出生日期：{$userinfo.birthday|date="Y年m月d日",###}</p>
+					<p>
+						<span style="line-height:1.5;">专业：{$userinfo.field|getZy}</span>
+					</p>
+					<p>录取批次：{$userinfo.pici}</p>
+					<p>班级：{$userinfo.class_id|getClass}</p>
+					<p>宿舍：{$userinfo['louhao']}#{$userinfo['sushe']}</p>
+					<p>联系方式：{$userinfo.tel}</p>
+					<p>
+						家庭住址：{$userinfo.province}{$userinfo.city}{$userinfo.dist}{$userinfo.address}
+					</p>
+					<p>家庭联系电话：{$userinfo.home_tel}</p>
+					<p>母亲姓名：{$userinfo.m_name}</p>
+					<p>母亲工作单位：{$userinfo.m_work}</p>
+					<p>母亲联系方式：{$userinfo.m_tel}</p>
+				</td>
+				<td style="vertical-align:top;width: 33%;">
+					<p>性别：{$userinfo.gender}</p>
+					<p>民族：{$userinfo.ethnicity}</p>
+					<p>照片：</p>
+					<p>
+					<if condition="empty($userinfo['photo'])">暂无照片
+					<else />
+					<img src="Uploads/images/130_{$userinfo.photo}" />
+					</if>
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+		<br />
+	</p>
+	<p>
+		<span style="font-size:18px;"> <strong>违纪信息</strong>
+		</span>
+	</p>
+	<p>
+		<span style="line-height:27px;"> <b></b>
+		</span>
+	</p>
+	<hr />
+	<p>
+		<span style="font-size:18px;">
+			<strong><table style="width:100%;" cellpadding="0" cellspacing="0" border="1" bordercolor="#000000">
+					<tbody>
+						<tr>
+							<td style="width: 5%">序号</td>
+							<td style="width: 10%">违纪时间</td>
+							<td>违纪原因</td>
+							<td style="width: 10%">处理时间</td>
+							<td>处理结果</td>
+						</tr>
+						<tr>
+							<volist id="vo" name="weiji">
+								<td>{$i}</td>
+								<td>{$vo.wjtime|date="Y年m月d日",###}</td>
+								<td>{$vo.reason|getWeijirull}</td>
+								<td>{$vo.cltime|date="Y年m月d日",###}</td>
+								<td>{$vo.result}</td>
+							</volist>
+						</tr>
+					</tbody>
+				</table></strong> 
+		</span>
+	</p>
+	<p>
+		<span style="font-size:18px;">
+			<strong>获奖情况</strong>
+		</span>
+	</p>
+	<p>
+		<span style="line-height:27px;">
+			<b></b>
+		</span>
+	</p>
+	<hr />
+	<p>
+		<span style="font-size:18px;">
+			<strong><strong>
+					<table cellpadding="0" cellspacing="0" border="1" bordercolor="#000000" style="width:1338px;">
+						<tbody>
+							<tr>
+								<td style="width: 5%">序号</td>
+								<td style="width: 10%">获得时间</td>
+								<td>个人荣誉</td>
+								<td>突出贡献</td>
+							</tr>
+							<tr>
+							<volist id="vo" name="honor">
+								<td>{$i}</td>
+								<td>{$vo.hdtime|date="Y年m月d日",###}</td>
+								<td>{$vo.phonor}</td>
+								<td>{$vo.contri}</td>
+							</volist>
+							</tr>
+						</tbody>
+					</table></strong> 
+			</strong>
+		</span>
+	</p>
+	<!--p>
+		<span style="font-size:18px;">
+			<strong>考勤情况</strong>
+		</span>
+	</p>
+	<p>
+		<span style="line-height:27px;">
+			<b></b>
+		</span>
+	</p>
+	<hr />
+	<p>
+		<span style="font-size:18px;">
+			<strong>
+				<strong>
+					<table cellpadding="0" cellspacing="0" border="1" bordercolor="#000000" style="width:1338px;">
+						<tbody>
+							<tr>
+								<td style="width: 5%">序号：</td>
+								<td>请假时间：</td>
+								<td>请假天数：</td>
+								<td>请假原因：</td>
+							</tr>
+							<tr>
+								<volist id="vo" name="rleave">
+									<td>{$i}</td>
+									<td>
+										{$vo.rdata1|date="Y年m月d日",###}至{$vo.rdata2|date="Y年m月d日",###}
+									</td>
+									<td>{$vo.days}</td>
+									<td>{$vo.reason}</td>
+								</volist>
+							</tr>
+						</tbody>
+					</table>
+				</strong>
+			</strong>
+		</span>
+	</p-->
+	<p>
+		<span style="font-size:18px;">
+			<strong>请假情况：</strong>
+		</span>
+	</p>
+	<p>
+		<span style="line-height:27px;">
+			<b></b>
+		</span>
+	</p>
+	<hr />
+	<table cellpadding="0" cellspacing="0" border="1" bordercolor="#000000" style="width:1338px;">
+		<tbody>
+			<tr>
+				<td style="width: 5%">序号：</td>
+				<td>请假时间</td>
+				<td>请假天数</td>
+				<td>请假原因</td>
+			</tr>
+			<tr>
+				<volist id="vo" name="rleave">
+					<td>{$i}</td>
+					<td>
+						{$vo.rdata1|date="Y年m月d日",###}至{$vo.rdata2|date="Y年m月d日",###}
+					</td>
+					<td>{$vo.days}</td>
+					<td>{$vo.reason}</td>
+				</volist>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+		<span style="font-size:18px;">
+			<strong>参与活动情况：</strong>
+		</span>
+	</p>
+	<p>
+		<span style="line-height:27px;">
+			<b></b>
+		</span>
+	</p>
+	<hr />
+	<table cellpadding="0" cellspacing="0" border="1" bordercolor="#000000" style="width:1338px;">
+		<tbody>
+			<tr>
+				<td style="width: 5%">序号</td>
+				<td>参加活动类型</td>
+				<td>参与活动情况</td>
+				<td>获得时间</td>
+			</tr>
+			<tr>
+				<volist id="vo" name="active">
+					<td>{$i}</td>
+					<td>{$vo.days}</td>
+					<td>{$vo.pactive}</td>
+					<td>{$vo.hdtime|date="Y年m月d日",###}</td>
+				</volist>
+			</tr>
+		</tbody>
+	</table>
+	</p>
+</body>
+</html>

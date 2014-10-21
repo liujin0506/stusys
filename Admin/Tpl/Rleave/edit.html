@@ -1,0 +1,81 @@
+
+<div class="pageContent">
+
+
+	<form method="post" action="__URL__/update/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/>
+		<input type="hidden" name="id" value="{$vo.id}" />
+		<div class="pageFormContent" layoutH="58">
+			<div class="unit">
+				<label>学号：</label>
+				<input type="text" name="account" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['account']}" disabled />
+			</div>
+			<div class="unit">
+				<label>班级：</label>
+				<input type="text" name="class" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['class_id']||getClass}" disabled />
+			</div>
+			<div class="unit">
+				<label>楼号：</label>
+				<input type="text" name="louhao" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['louhao']}" disabled />
+			</div>
+			<div class="unit">
+				<label>宿舍：</label>
+				<input type="text" name="sushe" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['sushe']}" disabled />
+			</div>
+			<div class="unit">
+				<label>姓名：</label>
+				<input type="text" name="nickname" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['nickname']}" disabled />
+			</div>
+			<div class="unit">
+				<label>性别：</label>
+				<input type="text" name="gender" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['gender']}" disabled />
+			</div>
+			<div class="unit">
+				<label>联系电话：</label>
+				<input type="text" name="tel" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['tel']}" disabled />
+			</div>
+			<div class="unit">
+				<label>请假时间：</label>
+					<input type="text" name="rdata1" class="date require" size="10" value="{$vo['rdata1']|date="Y-m-d",###}" /><a class="inputDateButton" href="javascript:;">选择</a>
+					<input type="text" name="rdata2" class="date require" size="10" value="{$vo['rdata2']|date="Y-m-d",###}"/><a class="inputDateButton" href="javascript:;">选择</a>
+			</div>
+			<div class="unit">
+				<label>请假天数：</label>
+				<input type="text"  name="days"  size="5" maxlength="5"  value="{$vo['days']}">&nbsp;&nbsp;天
+			</div>
+			<div class="unit">
+				<label>请假教师：</label>
+				<input type="text"  name="teacher"  size="15" maxlength="20" value="{$vo['teacher']}">
+			</div>
+			<div class="unit">
+				<label>请假事由：</label>
+				<textarea name="reason" rows="3" cols="57">{$vo['reason']}</textarea>
+			</div>
+			<div class="unit">
+				<label>备注：</label>
+				<textarea name="remark" rows="3" cols="57">{$vo['remark']}</textarea>
+			</div>
+			<div class="unit">
+				<label>准假教师：</label>
+				<input type="text"  name="zjteacher"  size="15" maxlength="20" value="{$vo['zjteacher']}">
+			</div>
+			<div class="unit">
+				<label>状  态：</label>
+				<select name="status">
+					<option <eq name="vo.status" value="2" >selected</eq> value="2">请假成功</option>
+					<option <eq name="vo.status" value="3" >selected</eq> value="3">请假未成功</option>
+					<option <eq name="vo.status" value="4" >selected</eq> value="4">销假成功</option>
+					<option <eq name="vo.status" value="0" >selected</eq> value="0">待审核</option>
+				</select>
+			</div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+</div>
+

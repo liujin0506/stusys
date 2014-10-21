@@ -1,0 +1,46 @@
+<div class="page">
+	<div class="pageContent">
+
+	<form method="post" action="__URL__/update/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="id" value="{$vo.id}" >
+		<div class="pageFormContent" layoutH="58">
+			<div class="unit">
+				<label>标题：</label>
+				<input type="text" class="required" value="{$vo.title}"  name="title" id="title">
+			</div>
+            <div class="unit">
+				<label>排序：</label>
+				<input type="text" class="required"  name="sort" id="sort" value="{$vo.sort}" size="5" />
+			</div>
+            <div class="unit">
+            <label>图片：</label>
+			<!--upload，可以加thumb="120,120" 属性-->
+             <input type="file"   name="fileField" pic="{$vo.pic}" uploadify="upconfig" id="fileField" />
+            </div>
+          <div class="unit">
+			<label>内容：</label>
+			  <textarea name="content" editor="{$vo.editor_id}" cols="80" rows="10">{$vo.content}</textarea>
+			</div>
+           
+             <div class="unit">
+			<label>状态：</label>
+			<label>
+				<select name="status">
+					<option <eq name="vo.status" value="1" >selected</eq> value="1">启用</option>
+					<option <eq name="vo.status" value="0" >selected</eq> value="0">禁用</option>
+				</select>
+		    </label>
+          </div> 
+		</div>
+
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+	</div>
+</div>
+

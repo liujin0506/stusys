@@ -1,0 +1,76 @@
+<h2 class="contentTitle">站点信息设置</h2>
+<div class="pageContent">
+	<form method="post" action="__URL__" class="pageForm required-validate" onsubmit="return validateCallback(this)">
+		<div class="pageFormContent nowrap" layoutH="97">
+			<dl>
+				<dt>站点名称：</dt>
+				<dd>
+					<input type="text" name="SITENAME" value="{$Think.config.sitename}" maxlength="20" class="required" />
+				</dd>
+			</dl>
+			<dl>
+				<dt>站点地址：</dt>
+				<dd>
+					<input type="text" name="SITEURL" value="{$Think.config.siteurl}" class="required url" />
+				</dd>
+			</dl>
+			<dl>
+				<dt>站点单位：</dt>
+				<dd>
+					<input type="text" name="COMPANY" value="{$Think.config.company}" class="required" />
+				</dd>
+			</dl>
+			<dl>
+				<dt>管理员：</dt>
+				<dd>
+					<input type="text" name="CONTACT" value="{$Think.config.contact}" class="required" />
+				</dd>
+			</dl>
+			<dl>
+				<dt>管理员邮箱：</dt>
+				<dd>
+					<input type="text" name="EMAIL" value="{$Think.config.email}" class="required email" alt="请输入您的电子邮件"/>
+				</dd>
+			</dl>
+			<dl>
+				<dt>管理员电话：</dt>
+				<dd>
+					<input type="text" name="PHONE" value="{$Think.config.phone}" class="phone" alt="请输入您的电话"/>
+				</dd>
+			</dl>
+			<dl>
+				<dt>管理员传真：</dt>
+				<dd>
+					<input type="text" name="FAX" value="{$Think.config.fax}" class="phone" alt="请输入您的传真"/>
+				</dd>
+			</dl>
+			<dl>
+				<dt>短信平台用户名：</dt>
+				<dd>
+					<input type="text" name="SMSUSER" value="{$Think.config.smsuser}" alt="短信平台用户名"/>
+				</dd>
+			</dl>
+			<dl>
+				<dt>短信平台接口密钥：</dt>
+				<dd>
+					<input type="text" name="SMSKEY" value="{$Think.config.smskey}" alt="短信平台接口密钥"/>
+				</dd>
+			</dl>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+</div>
+
+
+<script type="text/javascript">
+function customvalidXxx(element){
+	if ($(element).val() == "xxx") return false;
+	return true;
+}
+</script>

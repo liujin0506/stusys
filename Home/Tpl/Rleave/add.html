@@ -1,0 +1,77 @@
+
+<script language="JavaScript">
+<!--
+function checkName(){
+	ThinkAjax.send('__URL__/checkAccount/','ajax=1&account='+$F('account'));
+}
+//-->
+</script>
+
+
+<div class="pageContent">
+	
+	<form method="post" action="__URL__/insert/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<div class="pageFormContent" layoutH="58">
+		<input type="hidden" name="uid" value="{$userinfo['id']}"/>
+			<div class="unit">
+				<label>学号：</label>
+				<input type="text" name="account" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['account']}" disabled />
+			</div>
+			<div class="unit">
+				<label>班级：</label>
+				<input type="text" name="class" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['class_id']||getClass}" disabled />
+			</div>
+			<div class="unit">
+				<label>楼号：</label>
+				<input type="text" name="louhao" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['louhao']}" disabled />
+			</div>
+			<div class="unit">
+				<label>宿舍：</label>
+				<input type="text" name="sushe" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['sushe']}" disabled />
+			</div>
+			<div class="unit">
+				<label>姓名：</label>
+				<input type="text" name="nickname" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['nickname']}" disabled />
+			</div>
+			<div class="unit">
+				<label>性别：</label>
+				<input type="text" name="gender" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['gender']}" disabled />
+			</div>
+			<div class="unit">
+				<label>联系电话：</label>
+				<input type="text" name="tel" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['tel']}" disabled />
+			</div>
+			<div class="unit">
+				<label>请假时间：</label>
+					<input type="text" name="rdata1" class="date require" size="10" /><a class="inputDateButton" href="javascript:;">选择</a>
+					<input type="text" name="rdata2" class="date require" size="10" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</div>
+			<div class="unit">
+				<label>请假天数：</label>
+				<input type="text"  name="days"  size="5" maxlength="5">&nbsp;&nbsp;天
+			</div>
+			<div class="unit">
+				<label>请假教师：</label>
+				<input type="text"  name="teacher"  size="15" maxlength="20">
+			</div>
+			<div class="unit">
+				<label>请假事由：</label>
+				<textarea name="reason" rows="3" cols="57"></textarea>
+			</div>
+			<div class="unit">
+				<label>备注：</label>
+				<textarea name="remark" rows="3" cols="57"></textarea>
+			</div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+</div>
+
+
+

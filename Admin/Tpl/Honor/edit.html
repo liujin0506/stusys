@@ -1,0 +1,84 @@
+    <div class="pageContent">
+
+	<form method="post" action="__URL__/update/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/>
+		<input type="hidden" name="id" value="{$vo.id}" />
+		<div class="pageFormContent" layoutH="58">
+			<div class="unit">
+				<label>学号：</label>
+				<input type="text" name="account" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['account']}" disabled />
+			</div>
+			<div class="unit">
+				<label>班级：</label>
+				<input type="text" name="class" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['class_id']||getClass}" disabled />
+			</div>
+			<div class="unit">
+				<label>姓名：</label>
+				<input type="text" name="nickname" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['nickname']}" disabled />
+			</div>
+			<div class="unit">
+				<label>性别：</label>
+				<input type="text" name="gender" size="10" maxlength="20" class="required alphanumeric" value="{$userinfo['gender']}" disabled />
+			</div>
+			<div class="unit">
+				<label>联系电话：</label>
+				<input type="text" name="tel" size="30" maxlength="20" class="required alphanumeric" value="{$userinfo['tel']}" disabled />
+			</div>
+			<div class="unit">
+				<label>楼号：</label>
+				<input type="text" name="louhao" size="10" maxlength="20" class="required alphanumeric" value="{$userinfo['louhao']}" disabled />
+			</div>
+			<div class="unit">
+				<label>宿舍：</label>
+				<input type="text" name="sushe" size="10" maxlength="20" class="required alphanumeric" value="{$userinfo['sushe']}" disabled />
+			</div>
+			<div class="unit">
+				<label>获得时间：</label>
+					<input type="text" name="hdtime" class="date require" size="10" value="{$vo['hdtime']|date="Y-m-d",###}" /><a class="inputDateButton" href="javascript:;">选择</a>
+			</div>
+			<div class="unit">
+				<label>获奖类型：</label>
+				<select name="type">
+					<option value="其他">--请选择获奖类型--</option>
+					<volist name="honorrulls" id="honorrulls">
+					<option <if condition="($vo['type'] eq $honorrulls['id'])"> selected</if> value="{$honorrulls.id}">{$honorrulls.name}</option>
+					</volist>
+				</select>	
+			</div>
+			<div class="unit">
+				<label>获奖级别：</label>
+				<select name="level">
+					<option value="其他">--请选择获奖级别--</option>
+					<option <eq name="vo.level" value="国家级" >selected</eq> value="国家级">国家级</option>
+					<option <eq name="vo.level" value="自治区级" >selected</eq> value="自治区级">自治区级</option>
+					<option <eq name="vo.level" value="校级" >selected</eq> value="校级">校级</option>
+					<option <eq name="vo.level" value="院级" >selected</eq> value="院级">院级</option>
+				</select>	
+			</div>
+			<div class="unit">
+				<label>获奖情况：</label>
+				<textarea name="phonor" rows="5" cols="50">{$vo['phonor']}</textarea>
+			</div>
+			<div class="unit">
+				<label>备注：</label>
+				<textarea name="remark" rows="3" cols="50">{$vo['remark']}</textarea>
+			</div>
+			<div class="unit">
+				<label>状  态：</label>
+				<select name="status">
+					<option <eq name="vo.status" value="1" >selected</eq> value="1">已处理</option>
+					<option <eq name="vo.status" value="0" >selected</eq> value="0">未处理</option>
+					<option <eq name="vo.status" value="2" >selected</eq> value="2">已撤销</option>
+				</select>
+			</div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+</div>
+

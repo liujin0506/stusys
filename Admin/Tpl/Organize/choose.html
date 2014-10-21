@@ -1,0 +1,59 @@
+<form id="pagerForm" action="demo/database/dwzOrgLookup.html">
+	<input type="hidden" name="pageNum" value="1" />
+	<input type="hidden" name="numPerPage" value="${model.numPerPage}" />
+	<input type="hidden" name="orderField" value="${param.orderField}" />
+	<input type="hidden" name="orderDirection" value="${param.orderDirection}" />
+</form>
+<div class="pageHeader">
+	<form rel="pagerForm" onsubmit="return dwzSearch(this, 'dialog');" action="__URL__/choose" method="post">
+	<div class="searchBar">
+		<table class="searchContent">
+			<tr>
+				<td>
+					学号：<input type="text" name="account" />
+				</td>
+				<td>
+					姓名：<input type="text" name="nickname" />
+				</td>
+			</tr>
+		</table>
+		<div class="subBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+			</ul>
+		</div>
+	</div>
+	</form>
+</div>
+
+<div class="pageContent">
+	<table class="table" width="100%" targetType="dialog" layoutH="90">
+		<thead>
+		<tr>
+			<th width="60">编号</th>
+			<th width="100" orderField="account" <if condition="$_REQUEST._order eq 'account'">class="{$_REQUEST._sort}"</if>>学号</th>
+			<th orderField="nickname" <if condition="$_REQUEST._order eq 'nickname'">class="{$_REQUEST._sort}"</if>>姓名</th>
+			<th orderField="gender" <if condition="$_REQUEST._order eq 'gender'">class="{$_REQUEST._sort}"</if>>性别</th>
+			<th orderField="class_id" <if condition="$_REQUEST._order eq 'class_id'">class="{$_REQUEST._sort}"</if>>所在班级</th>
+			<th orderField="py_status" <if condition="$_REQUEST._order eq 'py_status'">class="{$_REQUEST._sort}"</if>>培养状态</th>
+			<th width="80" orderField="status" <if condition="$_REQUEST._order eq 'status'">class="{$_REQUEST._sort}"</if>>查找带回</th>
+		</tr>
+		</thead>
+		<tbody>
+		<volist id="vo" name="list">
+			<tr target="sid_user" rel="{$vo['id']}">
+				<td>{$vo['id']}</td>
+				<td>{$vo['account']}</td>
+				<td>{$vo['nickname']}</td>
+				<td>{$vo['gender']}</td>
+				<td>{$vo['class_id']|getClass}</td>
+				<td>{$vo['py_status']}</td>
+				<td><a class="btnSelect" href="javascript:$.bringBack({ sid:'{$vo['id']}', account:'{$vo['account']}', nickname:'{$vo['nickname']}',gender:'{$vo['gender']}',py_status:'{$vo['py_status']}',class:'{$vo['class_id']|getClass}'})" title="查找带回">选择</a>
+</td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+</div>
+
+

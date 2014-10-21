@@ -1,0 +1,172 @@
+<include file="Public:pagerForm" />
+
+<div class="pageHeader">
+	<form rel="pagerForm" onsubmit="return navTabSearch(this);" action="__URL__" method="post">
+	<div class="searchBar">
+		<ul class="searchContent">
+		<li>
+				<label>学号：</label>
+				<input type="text" name="account" />
+			</li>
+		<li>
+				<label>姓名：</label>
+				<input type="text" name="nickname" value="" />
+			</li>
+		<li>
+				<label>班级：</label>
+				<select class="" name="class_id">
+					<option value="">--请选择班级--</option>
+					<volist name="class" id="class">
+					<option value="{$class.id}">{$class.classname}</option>
+					</volist>
+				</select>
+			</li>	
+		</ul>
+		<ul class="searchContent">		
+			<li>
+				<label>宿舍：</label>
+				<select class="" name="dormitory_id">
+					<option value="">--请选择宿舍--</option>
+					<volist name="sushe" id="sushe">
+					<option value="{$sushe.id}">{$sushe.building}#{$sushe.sushe_id}</option>
+					</volist>
+				</select>
+			</li>
+			<li>
+				<label>性别：</label>
+				<select class="" name="gender">
+					<option value="">--请选择性别--</option>
+					<option value="男">男</option>
+					<option value="女">女</option>
+				</select>
+			</li>
+			<li>
+				<label>状态：</label>
+				<select class="" name="status">
+					<option value="">--请选择状态--</option>
+					<option value="2">请假成功</option>
+					<option value="3">请假未成功</option>
+					<option value="4">销假成功</option>
+					<option value="0">待审核</option>
+				</select>
+			</li>
+			<li>
+				<label>逾期天：</label>
+				<input type="text" name="yqsj" value="" />
+			</li>
+		</ul>
+		<div class="subBar">
+		<table class="searchContent">
+			<tbody>
+			<tr>
+				<td>
+					请假时间：
+				</td>
+				<td>
+					<input type="text" name="r_time1" class="date require textInput" size="10"><a class="inputDateButton" href="javascript:;">选择</a>
+				</td>
+				<td>---</td>
+				<td>
+					<input type="text" name="r_time2" class="date require textInput" size="10"><a class="inputDateButton" href="javascript:;">选择</a>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+			</ul>
+		</div>
+	</div>
+	</form>
+</div>
+<script>
+function xiaojia(id){
+	if(confirm("确定销假？")){ 
+	 document.getElementById('xiaojia'+id).click();
+	 document.getElementById('mvalue'+id).innerHTML='销假成功';
+	}else{
+	return false;
+	}
+	} 
+</script>
+<script>
+function zhunjia(id){
+	if(confirm("确定准假？")){ 
+	 document.getElementById('zhunjia'+id).click();
+	 document.getElementById('mvalue'+id).innerHTML='请假成功';
+	}else{
+	return false;
+	}
+	} 
+</script>
+<script>
+function nozhunjia(id){
+	if(confirm("确定不准假？")){ 
+	 document.getElementById('nozhunjia'+id).click();
+	 document.getElementById('mvalue'+id).innerHTML='请假未成功';
+	}else{
+	return false;
+	}
+	} 
+</script>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="__URL__/add" target="navTab"><span>新增</span></a></li>
+			<!--<li><a class="add" href="__URL__/alladd" target="navTab"><span>批量新增</span></a></li>-->
+			<li><a class="delete" href="__URL__/foreverdelete/id/{sid_user}/navTabId/__MODULE__" rel="ids[]" target="ajaxTodo" title="你确定要删除吗？" warn="请选择用户"><span>删除</span></a></li>
+			<li class=""><a title="确实要删除这些记录吗?" target="selectedTodo" rel="ids[]" href="__ROOT__/admin.php?s=/Rleave/delAll" class="delete"><span>批量删除</span></a></li>
+			<li><a class="edit" href="__URL__/edit/id/{sid_user}" target="dialog" mask="true" warn="请选择记录"><span>编辑/查看</span></a></li>
+			<li class="line">line</li>
+			<li><a class="edit" href="__URL__/sms/" mask="true" warn="请选择记录" target="selectedTodo" rel="ids[]" postType="string"><span>发送短信（请先设置模板=>）</span></a></li>
+			<li><a class="edit" href="__URL__/sms_mb/" target="dialog" ><span>短信模板设置</span></a></li>
+		</ul>
+	</div>
+	<div id="print_table">
+	<table class="table" width="100%" layoutH="163">
+		<thead>
+		<tr>
+			<th width="22"><input type="checkbox" group="ids[]" class="checkboxCtrl"></th>
+			<th width="50">编号</th>
+			<th width="80" orderField="account" <if condition="$_REQUEST._order eq 'sushename'">class="{$_REQUEST._sort}"</if>>学号</th>
+			<th  width="80" orderField="nickname" <if condition="$_REQUEST._order eq 'nickname'">class="{$_REQUEST._sort}"</if>>姓名</th>
+			<th width="130" orderField="class" <if condition="$_REQUEST._order eq 'xiaoqu'">class="{$_REQUEST._sort}"</if>>班级</th>
+			<th  width="50" orderField="gender" <if condition="$_REQUEST._order eq 'gender'">class="{$_REQUEST._sort}"</if>>性别</th>
+			<th width="80" orderField="tel" <if condition="$_REQUEST._order eq 'tel'">class="{$_REQUEST._sort}"</if>>联系电话</th>
+			<th width="140" orderField="rtime" <if condition="$_REQUEST._order eq 'rtime'">class="{$_REQUEST._sort}"</if>是>请假时间</th>
+			<th width="110" orderField="zjtime" <if condition="$_REQUEST._order eq 'zjtime'">class="{$_REQUEST._sort}"</if>是>准假时间</th>
+			<th width="110" orderField="create_time" <if condition="$_REQUEST._order eq 'create_time'">class="{$_REQUEST._sort}"</if>是>创建时间</th>
+			<th width="110" orderField="xjtime" <if condition="$_REQUEST._order eq 'xjtime'">class="{$_REQUEST._sort}"</if>是>销假时间</th>
+			<th width="150" orderField="status" <if condition="$_REQUEST._order eq 'status'">class="{$_REQUEST._sort}"</if>>状态</th>
+		</tr>
+		</thead>
+		<tbody>
+		<volist id="vo" name="list">
+			<tr target="sid_user" rel="{$vo['id']}">
+				<td><input name="ids[]" value="{$vo['id']}" type="checkbox"></td>
+				<td>{$vo['id']}</td>
+				<td>{$vo['sid']|getStudentinfo='account'}</td>
+				<td>{$vo['sid']|getStudentinfo='nickname'}</td>
+				<td>{$vo['sid']|getStudentinfo='class_id'|getClass}</td>
+				<td>{$vo['sid']|getStudentinfo='gender'}</td>
+				<td>{$vo['sid']|getStudentinfo='tel'}</td>
+				<td>{$vo['rdata1']|date="Y-m-d",###} 至 {$vo['rdata2']|date="Y-m-d",###}</td>
+				<td><if condition="$vo['zjtime'] neq 0">{$vo['zjtime']|date="Y-m-d H:i:s",###}</if></td>
+				<td>{$vo['createtime']|date="Y-m-d H:i:s",###}</td>
+				<td><if condition="$vo['xjtime'] neq 0">{$vo['xjtime']|date="Y-m-d H:i:s",###}</if></td>
+				<td id="mvalue{$vo['id']}"><if condition="$vo['status'] eq 2"> 请假成功 <elseif condition="$vo['status'] eq 3"/> 请假未成功 <elseif condition="$vo['status'] eq 4"/>销假成功 <elseif condition="$vo['status'] eq 0"/>待审核 <a href="javascript:vote3(0);" onclick="return zhunjia('{$vo['id']}');"><b style="color:#FF0000">准假</b></a> <a id="zhunjia{$vo['id']}" style="display:none;" href="__URL__/zhunjia/id/{$vo['id']}" target="ajaxTodo"><b style="color:#FF0000">准假</b></a> | <a href="javascript:vote3(0);" onclick="return nozhunjia('{$vo['id']}');"><b style="color:#FF0000">不准假</b></a> <a id="nozhunjia{$vo['id']}" style="display:none;" href="__URL__/nozhunjia/id/{$vo['id']}" target="ajaxTodo"><b style="color:#FF0000">不准假</b></a><else /> 未知状态 </if><if condition="$vo['status'] eq 2">  | <a href="__URL__/rprint/id/{$vo['id']}" target="_blank"><b style="color:#FF0000">打印假条</b></a> <a href="javascript:vote3(0);" onclick="return xiaojia('{$vo['id']}');"><b style="color:#FF0000">销假</b></a> <a id="xiaojia{$vo['id']}" style="display:none;" href="__URL__/xiaojia/id/{$vo['id']}" target="ajaxTodo"><b style="color:#FF0000">销假</b></a></if></td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+	</div>
+	<div class="panelBar">
+		<div class="pages">
+			<span>共{$totalCount}条</span>
+		</div>
+		<div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+	</div>
+
+</div>
+
+

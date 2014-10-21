@@ -1,0 +1,337 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/uploadimg/js/uploadify-v3.1/uploadify.css" media="all">
+<script type="text/javascript" src="__PUBLIC__/uploadimg/js/uploadify-v3.1/jquery.uploadify-3.1.min.js"></script>
+<script language="JavaScript">
+<!--
+function checkName(){
+	ThinkAjax.send('__URL__/checkAccount/','ajax=1&account='+$F('account'));
+}
+//-->
+</script>
+<script type="text/javascript">
+$(function() {
+    $('#file_upload').uploadify({
+        'swf'      : '__PUBLIC__/uploadimg/js/uploadify-v3.1/uploadify.swf',
+        'uploader' : '{:U("Student/uploadify")}',
+        'buttonText' : '上传头像',
+        'onUploadSuccess' : function(file, data, response) {
+            $('#image').attr('src','/Uploads/images/130_'+data);
+            $('#pic').val('130_'+data);
+        },
+    });
+ });
+ </script>
+<div class="pageContent">
+
+
+	<form method="post" action="__URL__/update/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/>
+		<input type="hidden" name="id" value="{$vo.id}" />
+		<div class="pageFormContent" layoutH="58">
+					
+			<div class="unit">
+				<label>学号：</label>
+				<input type="text" class="required alphanumeric" size="20" maxlength="20" name="account" value="{$vo.account}" disabled />
+			</div>
+			<div class="unit">
+				<label>校园卡号：</label>
+				<input type="text" name="sch_id" size="20" maxlength="20" class="required alphanumeric" value="{$vo.sch_id}" disabled />
+			</div>
+			<div class="unit">
+				<label>姓名：</label>
+				<input type="text" name="nickname" size="20" maxlength="100" class="required" value="{$vo.nickname}"disabled />
+			</div>
+			<div class="unit">
+				<label>性别：</label>
+				<select name="gender">
+					<option <eq name="vo.gender" value="男" >selected</eq> value="男">男</option>
+					<option <eq name="vo.gender" value="女" >selected</eq> value="女">女</option>
+					<option <eq name="vo.gender" value="未知" >selected</eq> value="未知">未知</option>
+				</select>
+			</div>
+			<div class="unit">
+				<label>照片：</label>
+				<img id="image" src="__PUBLIC__/uploadimg/js/mystery.png" width="130" height="130" border="0" />
+				<input id="file_upload" name="file_upload" type="file" multiple="true" value="" />
+				<input id="pic" name="photo" type="hidden" />
+			</div>
+			
+			<div class="unit">
+				<label>民族：</label>
+				<select name="ethnicity">
+					<option <eq name="vo.ethnicity" value="汉族" >selected</eq> value="汉族">汉族</option>
+				<option <eq name="vo.ethnicity" value="蒙古族" >selected</eq> value="蒙古族">蒙古族</option>
+				<option <eq name="vo.ethnicity" value="回族" >selected</eq> value="回族">回族</option>
+				<option <eq name="vo.ethnicity" value="藏族" >selected</eq> value="藏族">藏族</option>
+				<option <eq name="vo.ethnicity" value="维吾尔族" >selected</eq> value="维吾尔族">维吾尔族</option>
+				<option <eq name="vo.ethnicity" value="苗族" >selected</eq> value="苗族">苗族</option>
+				<option <eq name="vo.ethnicity" value="彝族" >selected</eq> value="彝族">彝族</option>
+				<option <eq name="vo.ethnicity" value="壮族" >selected</eq> value="壮族">壮族</option>
+				<option <eq name="vo.ethnicity" value="布依族" >selected</eq> value="布依族">布依族</option>
+				<option <eq name="vo.ethnicity" value="朝鲜族" >selected</eq> value="朝鲜族">朝鲜族</option>
+				<option <eq name="vo.ethnicity" value="满族" >selected</eq> value="满族">满族</option>
+				<option <eq name="vo.ethnicity" value="侗族" >selected</eq> value="侗族">侗族</option>
+				<option <eq name="vo.ethnicity" value="瑶族" >selected</eq> value="瑶族">瑶族</option>
+				<option <eq name="vo.ethnicity" value="白族" >selected</eq> value="白族">白族</option>
+				<option <eq name="vo.ethnicity" value="土家族" >selected</eq> value="土家族">土家族</option>
+				<option <eq name="vo.ethnicity" value="哈尼族" >selected</eq> value="哈尼族">哈尼族</option>
+				<option <eq name="vo.ethnicity" value="哈萨克族" >selected</eq> value="哈萨克族">哈萨克族</option>
+				<option <eq name="vo.ethnicity" value="傣族" >selected</eq> value="傣族">傣族</option>
+				<option <eq name="vo.ethnicity" value="黎族" >selected</eq> value="黎族">黎族</option>
+				<option <eq name="vo.ethnicity" value="傈僳族" >selected</eq> value="傈僳族">傈僳族</option>
+				<option <eq name="vo.ethnicity" value="佤族" >selected</eq> value="佤族">佤族</option>
+				<option <eq name="vo.ethnicity" value="畲族" >selected</eq> value="畲族">畲族</option>
+				<option <eq name="vo.ethnicity" value="高山族" >selected</eq> value="高山族">高山族</option>
+				<option <eq name="vo.ethnicity" value="拉祜族" >selected</eq> value="拉祜族">拉祜族</option>
+				<option <eq name="vo.ethnicity" value="东乡族" >selected</eq> value="东乡族">东乡族</option>
+				<option <eq name="vo.ethnicity" value="水族" >selected</eq> value="水族">水族</option>
+				<option <eq name="vo.ethnicity" value="纳西族" >selected</eq> value="纳西族">纳西族</option>
+				<option <eq name="vo.ethnicity" value="景颇族" >selected</eq> value="景颇族">景颇族</option>
+				<option <eq name="vo.ethnicity" value="柯尔克孜族" >selected</eq> value="柯尔克孜族">柯尔克孜族</option>
+				<option <eq name="vo.ethnicity" value="土族" >selected</eq> value="土族">土族</option>
+				<option <eq name="vo.ethnicity" value="达斡尔族" >selected</eq> value="达斡尔族">达斡尔族</option>
+				<option <eq name="vo.ethnicity" value="仫佬族" >selected</eq> value="仫佬族">仫佬族</option>
+				<option <eq name="vo.ethnicity" value="羌族" >selected</eq> value="羌族">羌族</option>
+				<option <eq name="vo.ethnicity" value="布朗族" >selected</eq> value="布朗族">布朗族</option>
+				<option <eq name="vo.ethnicity" value="撒拉族" >selected</eq> value="撒拉族">撒拉族</option>
+				<option <eq name="vo.ethnicity" value="毛难族" >selected</eq> value="毛难族">毛难族</option>
+				<option <eq name="vo.ethnicity" value="仡佬族" >selected</eq> value="仡佬族">仡佬族</option>
+				<option <eq name="vo.ethnicity" value="锡伯族" >selected</eq> value="锡伯族">锡伯族</option>
+				<option <eq name="vo.ethnicity" value="阿昌族" >selected</eq> value="阿昌族">阿昌族</option>
+				<option <eq name="vo.ethnicity" value="普米族" >selected</eq> value="普米族">普米族</option>
+				<option <eq name="vo.ethnicity" value="塔吉克族" >selected</eq> value="塔吉克族">塔吉克族</option>
+				<option <eq name="vo.ethnicity" value="怒族" >selected</eq> value="怒族">怒族</option>
+				<option <eq name="vo.ethnicity" value="乌孜别克族" >selected</eq> value="乌孜别克族">乌孜别克族</option>
+				<option <eq name="vo.ethnicity" value="俄罗斯族" >selected</eq> value="俄罗斯族">俄罗斯族</option>
+				<option <eq name="vo.ethnicity" value="鄂温克族" >selected</eq> value="鄂温克族">鄂温克族</option>
+				<option <eq name="vo.ethnicity" value="崩龙族" >selected</eq> value="崩龙族">崩龙族</option>
+				<option <eq name="vo.ethnicity" value="保安族" >selected</eq> value="保安族">保安族</option>
+				<option <eq name="vo.ethnicity" value="裕固族" >selected</eq> value="裕固族">裕固族</option>
+				<option <eq name="vo.ethnicity" value="京族" >selected</eq> value="京族">京族</option>
+				<option <eq name="vo.ethnicity" value="塔塔尔族" >selected</eq> value="塔塔尔族">塔塔尔族</option>
+				<option <eq name="vo.ethnicity" value="独龙族" >selected</eq> value="独龙族">独龙族</option>
+				<option <eq name="vo.ethnicity" value="鄂伦春族" >selected</eq> value="鄂伦春族">鄂伦春族</option>
+				<option <eq name="vo.ethnicity" value="赫哲族" >selected</eq> value="赫哲族">赫哲族</option>
+				<option <eq name="vo.ethnicity" value="门巴族" >selected</eq> value="门巴族">门巴族</option>
+				<option <eq name="vo.ethnicity" value="珞巴族" >selected</eq> value="珞巴族">珞巴族</option>
+				<option <eq name="vo.ethnicity" value="基诺族" >selected</eq> value="基诺族">基诺族</option>
+				<option <eq name="vo.ethnicity" value="其他" >selected</eq> value="其他">其他</option>
+				</select>
+			</div>
+			<div class="unit">
+				<label>出生日期：</label>
+				<input type="text" size="20" name="birthday " value="{$vo.birthday }" /> 格式：19901012
+			</div>
+			<div class="unit">
+				<label>政治面貌：</label>
+				<select name="politics">
+					<option <eq name="vo.politics" value="" >selected</eq> value="">--请选择政治面貌--</option>
+					<option <eq name="vo.politics" value="党员" >selected</eq> value="党员">党员</option>
+					<option <eq name="vo.politics" value="预备党员" >selected</eq> value="预备党员">预备党员</option>
+					<option <eq name="vo.politics" value="团员" >selected</eq> value="团员">团员</option>
+					<option <eq name="vo.politics" value="群众" >selected</eq> value="群众">群众</option>
+					<option <eq name="vo.politics" value="其他" >selected</eq> value="其他">其他</option>
+				</select>
+			</div>
+			<div class="unit">
+				<label>培养状态：</label>
+				<select name="py_status">
+					<option <eq name="vo.py_status" value="" >selected</eq> value="">--请选择培养状态--</option>
+					<option <eq name="vo.py_status" value="群众" >selected</eq> value="群众">群众</option>
+					<option <eq name="vo.py_status" value="团员" >selected</eq> value="团员">团员</option>
+					<option <eq name="vo.py_status" value="已递交入党申请" >selected</eq> value="已递交入党申请">已递交入党申请</option>
+					<option <eq name="vo.py_status" value="重点培养对象" >selected</eq> value="重点培养对象">重点培养对象</option>
+					<option <eq name="vo.py_status" value="预备党员" >selected</eq> value="预备党员">预备党员</option>
+					<option <eq name="vo.py_status" value="党员" >selected</eq> value="党员">党员</option>
+				</select>
+			</div>
+			<div class="unit">
+				<label>类别：</label>
+				<select name="type">
+					<option <eq name="vo.type" value="" >selected</eq> value="">--请选择类别--</option>
+					<option <eq name="vo.type" value="学生干部" >selected</eq> value="学生干部">学生干部</option>
+					<option <eq name="vo.type" value="积极分子" >selected</eq> value="积极分子">积极分子</option>
+					<option <eq name="vo.type" value="重点培养对象" >selected</eq> value="重点培养对象">重点培养对象</option>
+					<option <eq name="vo.type" value="学生干部且党员" >selected</eq> value="学生干部且党员">学生干部且党员</option>
+					<option <eq name="vo.type" value="学生干部且积极分子" >selected</eq> value="学生干部且积极分子">学生干部且积极分子</option>
+					<option <eq name="vo.type" value="重点培养对象且学生干部" >selected</eq> value="重点培养对象且学生干部">重点培养对象且学生干部</option>
+					<option <eq name="vo.type" value="学生干部且积极分子" >selected</eq> value="学生干部且积极分子">学生干部且积极分子</option>
+					<option <eq name="vo.type" value="普通学生" >selected</eq> value="普通学生">普通学生</option>
+				</select>
+			</div>
+			<div class="unit">
+				<label>专业：</label>
+				<select name="field">
+					<option value="其他">--请选择专业--</option>
+					<volist name="zhuanye" id="zhuanye">
+					<option <if condition="($vo['field'] eq $zhuanye['id'])"> selected</if> value="{$zhuanye.id}">{$zhuanye.zhuanyename}</option>
+					</volist>
+				</select>
+			</div>
+			<div class="unit">
+				<label>录取批次：</label>
+				<select name="pici">
+					<option <eq name="vo.pici" value="" >selected</eq> value="">--请选择录取批次--</option>
+					<option <eq name="vo.pici" value="本科一批" >selected</eq> value="本科一批">本科一批</option>
+					<option <eq name="vo.pici" value="本科二批" >selected</eq> value="本科二批">本科二批</option>
+					<option <eq name="vo.pici" value="本科二批C" >selected</eq> value="本科二批C">本科二批C</option>
+					<option <eq name="vo.pici" value="专科一批" >selected</eq> value="专科一批">专科一批</option>
+				</select>
+			</div>
+			<div class="unit">
+				<label>培养类别：</label>
+				<select name="yeartype">
+					<option <eq name="vo.yeartype" value="" >selected</eq> value="">--请选择培养类别--</option>
+					<option <eq name="vo.yeartype" value="4年制本科" >selected</eq> value="4年制本科">4年制本科</option>
+					<option <eq name="vo.yeartype" value="5年制预科" >selected</eq> value="5年制预科">5年制预科</option>
+				</select>
+			</div>
+			<div class="unit">
+				<label>学生状态：</label>
+				<select name="s_status">
+					<option <eq name="vo.s_status" value="" >selected</eq> value="">--请选择在校状态--</option>
+					<option <eq name="vo.s_status" value="在校" >selected</eq> value="在校">在校</option>
+					<option <eq name="vo.s_status" value="当兵" >selected</eq> value="当兵">当兵</option>
+					<option <eq name="vo.s_status" value="休学" >selected</eq> value="休学">休学</option>
+					<option <eq name="vo.s_status" value="转学入" >selected</eq> value="转学入">转学入</option>
+					<option <eq name="vo.s_status" value="转学出" >selected</eq> value="转学出">转学出</option>
+					<option <eq name="vo.s_status" value="退学" >selected</eq> value="退学">退学</option>
+					<option <eq name="vo.s_status" value="开除学籍" >selected</eq> value="开除学籍">开除学籍</option>
+					<option <eq name="vo.s_status" value="已毕业" >selected</eq> value="已毕业">已毕业</option>
+					<option <eq name="vo.s_status" value="其他" >selected</eq> value="其他">其他</option>
+				</select>
+			</div>
+			<div class="unit">
+				<label>入学年份：</label>
+				<select name="grade">
+					<option <eq name="vo.grade" value="" >selected</eq> value="">--请选择入学年份--</option>
+					<option <eq name="vo.grade" value="2015" >selected</eq> value="2015">2015</option>
+					<option <eq name="vo.grade" value="2014" >selected</eq> value="2014">2014</option>
+					<option <eq name="vo.grade" value="2013" >selected</eq> value="2013">2013</option>
+					<option <eq name="vo.grade" value="2012" >selected</eq> value="2012">2012</option>
+					<option <eq name="vo.grade" value="2011" >selected</eq> value="2011">2011</option>
+					<option <eq name="vo.grade" value="2010" >selected</eq> value="2010">2010</option>
+				</select>
+			</div>
+			<div class="unit">
+				<label>所在班级：</label>
+				<select name="class_id">
+					<option value="其他">--请选择班级--</option>
+					<volist name="class" id="class">
+					<option <if condition="($vo['class_id'] eq $class['id'])"> selected</if> value="{$class.id}">{$class.classname}</option>
+					</volist>
+				</select>
+			</div>
+			<div class="unit">
+				<label>所在楼号：</label>
+				<input type="text" size="10" name="louhao" value="{$vo.louhao}" />
+			</div>
+			<div class="unit">
+				<label>所在宿舍：</label>
+				<input type="text" size="10" name="sushe" value="{$vo.sushe}" />
+			</div>
+			<div class="unit">
+				<label>贫困生等级：</label>
+				<select name="poor_lever">
+					<option <eq name="vo.poor_lever" value="" >selected</eq> value="">--请选择贫困生等级--</option>
+					<option <eq name="vo.poor_lever" value="A" >selected</eq> value="A">A</option>
+					<option <eq name="vo.poor_lever" value="B" >selected</eq> value="B">B</option>
+					<option <eq name="vo.poor_lever" value="C" >selected</eq> value="C">C</option>
+					<option <eq name="vo.poor_lever" value="普通贫困" >selected</eq> value="普通贫困">普通贫困</option>
+					<option <eq name="vo.poor_lever" value="无" >selected</eq> value="无">无</option>
+				</select>
+			</div>
+			<div class="unit">
+				<label>参加的社团：</label>
+				<input type="text" name="shetuan" size="30" maxlength="100" value="{$vo.shetuan}" />
+			</div>
+			<div class="unit">
+				<label>学生干部职务：</label>
+				<input type="text" name="cadres" size="30" maxlength="100" value="{$vo.cadres}" />
+			</div>
+			<div class="unit">
+				<label>宗教信仰：</label>
+				<select name="religion">
+					<option <eq name="vo.religion" value="" >selected</eq> value="">--请选择宗教信仰--</option>
+					<option <eq name="vo.religion" value="无" >selected</eq> value="无">无</option>
+					<option <eq name="vo.religion" value="佛教" >selected</eq> value="佛教">佛教</option>
+					<option <eq name="vo.religion" value="基督教" >selected</eq> value="基督教">基督教</option>
+					<option <eq name="vo.religion" value="伊斯兰教" >selected</eq> value="伊斯兰教">伊斯兰教</option>
+					<option <eq name="vo.religion" value="天主教" >selected</eq> value="天主教">天主教</option>
+					<option <eq name="vo.religion" value="道教" >selected</eq> value="道教">道教</option>
+					<option <eq name="vo.religion" value="其他" >selected</eq> value="其他">其他</option>
+				</select>
+			</div>
+			<div class="unit">
+				<label>联系方式：</label>
+				<input type="text" name="tel" size="30" maxlength="100" value="{$vo.tel}" />
+			</div>
+			<div class="unit">
+				<label>身份证号：</label>
+				<input type="text" name="idcard" size="30" maxlength="100" value="{$vo.idcard}" />
+			</div>
+			<div class="unit">
+				<label>家庭住址：</label>
+				<select class="combox" name="province" ref="w_combox_city" refUrl="__URL__/returnCity/cityId/{value}">
+					<option value="{$vo.province}">{$vo.province}</option>
+					<volist name="provincelist" id="alist">
+					<option value="{$key}">{$alist}</option>
+					</volist>
+				</select>
+				<select class="combox" name="city" id="w_combox_city" ref="w_combox_area" refUrl="__URL__/returnArea/areaId/{value}">
+					<option value="{$vo.city}">{$vo.city}</option>
+				</select>
+				<select class="combox" name="dist" id="w_combox_area">
+					<option value="{$vo.dist}">{$vo.dist}</option>
+				</select> 
+				更改地址请从省级开始重新选择！
+			</div>
+			<div class="unit">
+				<label>详细地址：</label>
+				<input type="text" name="address" size="30" maxlength="100" class="required" value="{$vo.address}" />
+			</div>
+			<div class="unit">
+				<label>家庭联系电话：</label>
+				<input type="text" class="required alphanumeric" size="30" maxlength="20" name="home_tel" value="{$vo.home_tel}" />
+			</div>
+			<div class="unit">
+				<label>父亲姓名：</label>
+				<input type="text" name="f_name" size="30" maxlength="100" class="required" value="{$vo.f_name}" />
+			</div>
+			<div class="unit">
+				<label>父亲工作单位：</label>
+				<input type="text" name="f_work" size="30" maxlength="100" class="required" value="{$vo.f_work}" />
+			</div>
+			<div class="unit">
+				<label>父亲联系电话：</label>
+				<input type="text" class="required alphanumeric" size="30" maxlength="20" name="f_tel" value="{$vo.f_tel}" />
+			</div>
+			<div class="unit">
+				<label>母亲姓名：</label>
+				<input type="text" name="m_name" size="30" maxlength="100" class="required" value="{$vo.m_name}" />
+			</div>
+			<div class="unit">
+				<label>母亲工作单位：</label>
+				<input type="text" name="m_work" size="30" maxlength="100" class="required" value="{$vo.m_work}"/>
+			</div>
+			<div class="unit">
+				<label>母亲联系电话：</label>
+				<input type="text" class="required alphanumeric" size="30" maxlength="20" name="m_tel" value="{$vo.m_tel}"/>
+			</div>
+			<div class="unit" style="display:none;">
+				<label>状态：</label>
+				<select name="status">
+					<option <eq name="vo.status" value="1" >selected</eq> value="1">启用</option>
+					<option <eq name="vo.status" value="0" >selected</eq> value="0">禁用</option>
+				</select>
+			</div>		
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+</div>
+

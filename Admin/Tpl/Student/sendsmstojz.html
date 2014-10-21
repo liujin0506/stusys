@@ -1,0 +1,36 @@
+
+<div class="pageContent">
+
+
+	<form method="post" action="__URL__/sendsms/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/>
+		<input type="hidden" name="id" value="{$vo.id}" />
+		<div class="pageFormContent" layoutH="58">
+			<div class="unit">
+				<label>家长姓名：</label>
+				<input type="hidden" name="id" value="{$vo.id}">
+				<input type="text" name="nickname" size="30" maxlength="100" class="required" value="{$vo.f_name}"/>
+			</div>
+			<div class="unit">
+				<label>家长联系方式：</label>
+				<input type="text" class="required alphanumeric" size="30" maxlength="20" name="tel" value="{$vo.f_tel}" />
+			</div>
+			<div class="unit">
+				<label>短信内容：</label>
+				<textarea class="large bLeft"  name="content" rows="5" cols="50">家长你好...</textarea>
+			</div>
+			<div class="unit">
+				<label>短信标签：</label>
+				<textarea class="large bLeft"  name="tag" rows="5" cols="50" readonly>可以使用:{name} 替换学生姓名  {xuehao} 替换学号  {class} 替换班级  {gender} 替换性别   {tel}替换电话号码</textarea>
+			</div>			
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">发送</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+</div>
+
